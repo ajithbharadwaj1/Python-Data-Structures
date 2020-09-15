@@ -1,0 +1,24 @@
+file=input("Enter file")
+handle=open(file)
+count=dict()
+for lines in handle:
+	if not lines.startswith('From '):
+		continue
+	else:
+		words=lines.split()
+		word=words[5]
+			
+		w=word.split(':')
+		k=w[0]
+		count[k]=count.get(k,0)+1
+
+lst=list()
+for key,val in count.items():
+	newtp=(key,val)
+	lst.append(newtp)
+	
+
+lst=sorted(lst)
+
+for k,v in lst:
+	print(k,v)
