@@ -1,0 +1,19 @@
+# Use the file name mbox-short.txt as the file name
+c=0;
+n=0;
+fname = input("Enter file name: ")
+fh = open(fname)
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:") : 
+        continue
+    k=line.find(":");
+    k=line[k:];
+    l=k.find("0");
+    m=float(k[l:]);
+    c=c+m;
+    n=n+1;
+
+    
+avg=c/n;
+print("Average spam confidence:",avg);
+    
