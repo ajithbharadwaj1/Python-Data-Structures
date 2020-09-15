@@ -1,0 +1,22 @@
+name=input("Input A File")
+handle=open(name)
+counts=dict()
+
+for lines in handle:
+	if not lines.startswith("From "):
+		continue
+	else:
+		words=lines.split()
+		
+		counts[words[1]]=counts.get(words[1],0)+1
+
+bigword=None
+bigcount=None
+
+for key,values in counts.items():
+	if bigcount is None or values>bigcount:
+		bigcount=values
+		bigword=key
+
+print(bigword,bigcount)
+
